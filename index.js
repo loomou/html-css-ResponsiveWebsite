@@ -56,3 +56,39 @@ filterBtns.addEventListener("click", e => {
     isotope.arrange({filter: filterOption});
   }
 });
+
+const staggeringOption = {
+  delay: 300,
+  distance: "50px",
+  duration: 500,
+  easing: "ease-in-out",
+  origin: "bottom",
+};
+
+ScrollReveal().reveal(".feature", {...staggeringOption, interval: 350});
+ScrollReveal().reveal(".service-item", {...staggeringOption, interval: 350});
+const dataSectionEL = document.querySelector(".data-section");
+
+ScrollReveal().reveal(".data-section", {
+  beforeReveal: () => {
+    anime({
+      targets: ".data-piece .num",
+      innerHTML: el => {
+        return [0, el.innerHTML];
+      },
+      duration: 2000,
+      round: 1,
+      easing: "easeInExpo"
+    });
+    dataSectionEL.style.backgroundPosition = `center calc(50% - ${dataSectionEL.getBoundingClientRect().bottom / 5}px)`;
+  }
+});
+
+
+window.addEventListener("scroll", () => {
+  const bottom = dataSectionEL.getBoundingClientRect().bottom;
+  const top = dataSectionEL.getBoundingClientRect().top;
+  if (bottom >= 0 && top <= window.innerHeight) {
+    dataSectionEL.style.backgroundPosition = `center calc(50% - ${bottom / 5}px)`;
+  }
+});
