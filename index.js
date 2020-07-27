@@ -92,3 +92,15 @@ window.addEventListener("scroll", () => {
     dataSectionEL.style.backgroundPosition = `center calc(50% - ${bottom / 5}px)`;
   }
 });
+
+const scroll = new SmoothScroll('nav a[href*="#"], .scrollToTop a[href*="#"]', {
+  header: "header",
+  offset: 80
+});
+
+const exploreBtnEl = document.querySelectorAll(".explore-btn");
+exploreBtnEl.forEach(exploreBtnEl => {
+  exploreBtnEl.addEventListener("click", () => {
+    scroll.animateScroll(document.querySelector("#about-us"));
+  });
+});
