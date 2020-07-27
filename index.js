@@ -1,3 +1,23 @@
+const headerEl = document.querySelector("header");
+const scrollToTop = document.querySelector(".scrollToTop");
+
+window.addEventListener("scroll", () => {
+  let height = headerEl.getBoundingClientRect().height;
+  if (window.pageYOffset - height > 800) {
+    if (!headerEl.classList.contains("sticky")) {
+      headerEl.classList.add("sticky");
+    }
+  } else {
+    headerEl.classList.remove("sticky");
+  }
+
+  if (window.pageYOffset > 2000) {
+    scrollToTop.style.display = "block";
+  } else {
+    scrollToTop.style.display = "none";
+  }
+});
+
 const glide = new Glide(".glide");
 const captionsEl = document.querySelectorAll(".slide-caption");
 
@@ -28,11 +48,11 @@ const isotope = new Isotope(".cases", {
 
 const filterBtns = document.querySelector(".filter-btns");
 filterBtns.addEventListener("click", e => {
-  let { target } = e;
+  let {target} = e;
   const filterOption = target.getAttribute("data-filter");
   if (filterOption) {
     document.querySelectorAll(".filter-btn.active").forEach(btn => btn.classList.remove("active"));
     target.classList.add("active");
     isotope.arrange({filter: filterOption});
   }
-})
+});
