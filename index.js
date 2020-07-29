@@ -98,9 +98,21 @@ const scroll = new SmoothScroll('nav a[href*="#"], .scrollToTop a[href*="#"]', {
   offset: 80
 });
 
+document.addEventListener("scrollSrart", () => {
+  if (headerEl.classList.contains("open")) {
+    headerEl.classList.remove("open");
+  }
+});
+
 const exploreBtnEl = document.querySelectorAll(".explore-btn");
 exploreBtnEl.forEach(exploreBtnEl => {
   exploreBtnEl.addEventListener("click", () => {
     scroll.animateScroll(document.querySelector("#about-us"));
   });
 });
+
+// 折叠按钮
+const burgerEl = document.querySelector(".burger");
+burgerEl.addEventListener("click", () => {
+  headerEl.classList.toggle("open");
+})
