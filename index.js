@@ -98,7 +98,7 @@ const scroll = new SmoothScroll('nav a[href*="#"], .scrollToTop a[href*="#"]', {
   offset: 80
 });
 
-document.addEventListener("scrollSrart", () => {
+document.addEventListener("scrollStart", () => {
   if (headerEl.classList.contains("open")) {
     headerEl.classList.remove("open");
   }

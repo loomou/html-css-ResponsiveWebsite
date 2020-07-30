@@ -20,10 +20,12 @@ img {
   --text--color-dark-gary: #727272;
   --text--color-light-gary: #c6c6c6;
   --backdrop-color: rgba(42, 42, 42, 0.69);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 header {
-  width: 100%;
+  width: calc(100vw - 17px);
   height: 80px;
   display: grid;
   padding: 0 40px;
@@ -617,7 +619,9 @@ footer {
     cursor: pointer;
   }
 
-  .burger-line1, .burger-line2, .burger-line3 {
+  .burger-line1,
+  .burger-line2,
+  .burger-line3 {
     width: 20px;
     height: 2px;
     background-color: var(--text--color-lightest);
@@ -634,6 +638,7 @@ footer {
   }
 
   header.open nav {
+    display: grid;
     position: absolute;
     left: 0;
     top: 0;
@@ -649,10 +654,10 @@ footer {
 
   header.open nav > * {
     color: var(--text--color-darker);
-    animation: showMenu 0.5s linear forwards 0.4s;
     font-size: 18px;
     margin: 4px 0;
     opacity: 0;
+    animation: showMenu 0.5s linear forwards 0.4s;
   }
 
   header.open nav > i.fas {
@@ -694,7 +699,7 @@ footer {
     }
 
     to {
-      height: 300vh;
+      height: 100vh;
       padding-top: 80px;
       opacity: 1;
     }
@@ -707,7 +712,7 @@ footer {
     }
 
     to {
-      opacity: 3;
+      opacity: 1;
       transform: translateY(0);
     }
   }
@@ -721,7 +726,7 @@ footer {
     line-height: 24px;
   }
 
-  .team-member {
+  .team-members {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 36px;
     column-gap: 6vw;
@@ -772,5 +777,61 @@ footer {
 
   .contact-us {
     grid-row: 1 / 3;
+  }
+
+  .footer-menus {
+    text-align: left;
+  }
+
+  .activities {
+    grid-template-columns: 1fr;
+    row-gap: 36px;
+  }
+
+  .data-section {
+    grid-template-columns: 1fr;
+    background-size: 300%;
+  }
+
+  .team-members {
+    grid-template-columns: minmax(200px, 400px);
+  }
+
+  .features, .services {
+    grid-template-columns: 1fr;
+  }
+
+  .showcases {
+    width: calc(100vw / 2);
+    height: 30vw;
+  }
+}
+
+@media (max-width: 526px) {
+  .slide-caption h1 {
+    font-size: 28px;
+  }
+
+  .slide-caption h3 {
+    font-size: 14px;
+  }
+
+  .explore-btn {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+
+  .showcases .case-item {
+    width: 100vw;
+    height: 60vw;
+  }
+
+  .footer-menus {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-menu {
+    justify-self: start;
+    text-align: left;
   }
 }
